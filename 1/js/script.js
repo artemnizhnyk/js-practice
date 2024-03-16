@@ -34,7 +34,7 @@ console.log("---------------------------------");
 const answers = [];
 // answers[0] = prompt("What is your first name", "");
 // answers[1] = prompt("What is your last name", "");
-// answers[2] = prompt("How old are you", "");
+// answers[2operators] = prompt("How old are you", "");
 
 console.log(typeof answers)
 
