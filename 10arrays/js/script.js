@@ -20,7 +20,7 @@ arr.forEach(function (item, i, array) {
     console.log(`${i}: ${item} inside of array - ${array}`);
 });
 
-const str = prompt(``,``);
-const products = str.split(`, `);
-products.sort();
-console.log(products.join('; '));
+// const str = prompt(``,``);
+// const products = str.split(`, `);
+// products.sort();
+// console.log(products.join('; '));
