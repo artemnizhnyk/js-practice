@@ -16,7 +16,7 @@ console.log("-------------------");
 //     return (a + b);
 // }
 
-// console.log(calc(1, 2));
+// console.log(calc(1, 2actionsonapage));
 
 console.log("-------------------");
 
