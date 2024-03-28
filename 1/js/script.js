@@ -28,7 +28,7 @@ console.log("---------------------------------");
 // const result = confirm("Are you here");
 // console.log(result);
 
-// const answer = prompt("Do you have 18?", "");
+// const answer = prompt("Do you have 18nodestraveling?", "");
 // console.log(answer);
 
 const answers = [];
