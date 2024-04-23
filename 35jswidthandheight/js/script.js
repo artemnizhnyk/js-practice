@@ -25,5 +25,3 @@ console.log(`----------------------`);
 
 const style = window.getComputedStyle(box);
 console.log(style.display);
-console.log();
-
