@@ -182,30 +182,44 @@ window.addEventListener(`DOMContentLoaded`, () => {
         }
     }
 
-    const getResource = async (url) => {
-        const res = await fetch(url);
+    // const getResource = async (url) => {
+    //     const res = await fetch(url);
+    //
+    //     if (!res.ok) {
+    //         throw new Error(`Something is wrong, couldn't fetch ${url}, status: ${res.status}`);
+    //     }
+    //     return await res.json();
+    // };
 
-        if (!res.ok) {
-            throw new Error(`Something is wrong, couldn't fetch ${url}, status: ${res.status}`);
+    // getResource(`http://localhost:3000/menu`)
+    //     .then(data => {
+    //         data.forEach(({img, altimg, title, descr, price}) => {
+    //             new MenuItem(
+    //                 img,
+    //                 altimg,
+    //                 title,
+    //                 descr,
+    //                 price,
+    //                 `.menu .container`,
+    //                 `menu__item`
+    //             )
+    //                 .render();
+    //         });
+    //     });
+
+    axios.get(`http://localhost:3000/menu`)
+        .then(res => res.data.forEach(({img, altimg, title, descr, price}) => {
+            new MenuItem(
+                img,
+                altimg,
+                title,
+                descr,
+                price,
+                `.menu .container`,
+                `menu__item`
+            ).render();
         }
-        return await res.json();
-    };
-
-    getResource(`http://localhost:3000/menu`)
-        .then(data => {
-            data.forEach(({img, altimg, title, descr, price}) => {
-                new MenuItem(
-                    img,
-                    altimg,
-                    title,
-                    descr,
-                    price,
-                    `.menu .container`,
-                    `menu__item`
-                )
-                    .render();
-            });
-        });
+        ));
 
     // getResource(`http://localhost:3000/menu`)
     //     .then(data => createCards(data));
