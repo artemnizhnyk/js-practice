@@ -1,12 +1,12 @@
-function slider() {
-    const slides = document.querySelectorAll(`.offer__slide`),
-        slider = document.querySelector(`.offer__slider`),
-        prevArrow = document.querySelector(`.offer__slider-prev`),
-        nextArrow = document.querySelector(`.offer__slider-next`),
-        totalCountOfSlides = document.querySelector(`#total`),
-        currentSlide = document.querySelector(`#current`),
-        slidesWrapper = document.querySelector(`.offer__slider-wrapper`),
-        slidesField = document.querySelector(`.offer-slider-inner`),
+function slider({container, slide, nextArrow, prevArrow, totalCounter, currentCounter, wrapper, field}) {
+    const slides = document.querySelectorAll(slide),
+        slider = document.querySelector(container),
+        prev = document.querySelector(prevArrow),
+        next = document.querySelector(nextArrow),
+        totalCountOfSlides = document.querySelector(totalCounter),
+        currentSlide = document.querySelector(currentCounter),
+        slidesWrapper = document.querySelector(wrapper),
+        slidesField = document.querySelector(field),
         widthForSlider = window.getComputedStyle(slidesWrapper).width;
     let slideIndex = 1,
         offset = 0;
@@ -78,7 +78,7 @@ function slider() {
         return str.replace(/\D/g, ``);
     }
 
-    nextArrow.addEventListener(`click`, () => {
+    next.addEventListener(`click`, () => {
         if (offset === +deleteNotDigits(widthForSlider) * (slides.length - 1)) {
             offset = 0;
         } else {
@@ -103,7 +103,7 @@ function slider() {
         dots[slideIndex - 1].style.opacity = 1;
     });
 
-    prevArrow.addEventListener(`click`, () => {
+    prev.addEventListener(`click`, () => {
         if (offset === 0) {
             offset = +deleteNotDigits(widthForSlider) * (slides.length - 1);
         } else {
@@ -148,4 +148,4 @@ function slider() {
     });
 }
 
-module.exports = slider;
+export default slider;

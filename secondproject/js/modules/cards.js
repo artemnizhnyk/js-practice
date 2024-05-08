@@ -1,4 +1,4 @@
-function menuItems() {
+function cards() {
     class MenuItem {
         constructor(src, alt, title, description, price, parentSelector, ...classes) {
             this.src = src;
@@ -52,6 +52,7 @@ function menuItems() {
                 ).render();
             }
         ));
+
 }
 
-module.exports = menuItems;
+export default cards;
