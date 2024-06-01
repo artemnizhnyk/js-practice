@@ -116,22 +116,39 @@ const artemArray = [
 const artemObject = {
     firstName: "Artem",
     lastName: "Nizhnyk",
-    job: 'programmer',
+    job: "programmer",
     birthYear: 2001,
     friends: artemsFriends,
     hasDriversLicense: true,
 
-    calcAge: function() {
+    calcAge: function () {
         if (this.age) {
             return this.age;
         }
         this.age = 2024 - this.birthYear;
-        return this.age
+        return this.age;
     }
 };
 
 console.log(artemObject.firstName);
-console.log(artemObject['first' + 'Name']);
+console.log(artemObject["first" + "Name"]);
 
 console.log(artemObject.calcAge());
 
+console.log("------------------------");
+
+for (let i = 0; i < artemsFriends.length; i++) {
+    console.log(artemsFriends[i]);
+}
+
+console.log("------------------------");
+
+let rep = 1;
+
+while (true) {
+    console.log(`Lifting weights repetition ${rep}`);
+    if (rep >= 10) {
+        break;
+    }
+    rep++;
+}
