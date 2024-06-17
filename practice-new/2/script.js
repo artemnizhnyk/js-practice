@@ -46,3 +46,34 @@ const addArrow = (a, b) => a + b;
 function deleteShoppingCart() {
     console.log(`All products deleted!`);
 }
+
+console.log(`----------------------`);
+
+console.log(this);
+
+const any123 = function (any) {
+    console.log(2037 - any);
+    console.log(this);
+};
+any123(1);
+
+const any1234 = (any) => {
+    console.log(2037 - any);
+    console.log(this);
+};
+any1234(1);
+
+const anyObj = {
+    year: 2001,
+    calcAge: function () {
+        console.log(this);
+    }
+};
+anyObj.calcAge();
+
+const oneMore = {
+    year: 2000,
+};
+
+oneMore.calcAge = anyObj.calcAge;
+oneMore.calcAge();
