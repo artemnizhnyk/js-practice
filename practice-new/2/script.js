@@ -37,11 +37,11 @@ function addDecl(a, b) {
     return a + b;
 }
 
-const addExpr = function (a, b) {
-    return a + b;
-};
-
-const addArrow = (a, b) => a + b;
+// const addExpr = function (a, b) {
+//     return a + b;
+// };
+//
+// const addArrow = (a, b) => a + b;
 
 function deleteShoppingCart() {
     console.log(`All products deleted!`);
@@ -64,12 +64,25 @@ const any1234 = (any) => {
 any1234(1);
 
 const anyObj = {
+    firstName: 'Any',
     year: 2001,
-    calcAge: function () {
-        console.log(this);
-    }
+    calcAge: function (){
+        // Solution 1
+        // console.log(this);
+        //
+        // const self = this;
+        // const isMillenial = function () {
+        //     console.log(self.year >= 1981 && self.year <=1996);
+        // };
+
+        // Solution 2
+        const isMillenial = () => console.log(this.year >= 1981 && this.year <=1996);
+
+        isMillenial();
+    },
+    greet: () => console.log(`Hey ${this.firstName}`)
 };
-anyObj.calcAge();
+// anyObj.calcAge();
 
 const oneMore = {
     year: 2000,
@@ -77,3 +90,23 @@ const oneMore = {
 
 oneMore.calcAge = anyObj.calcAge;
 oneMore.calcAge();
+
+console.log(`----------------------`);
+
+anyObj.greet();
+anyObj.calcAge();
+
+// Arguments keyword
+const addExpr = function (a, b) {
+    console.log(arguments);
+    return a + b;
+};
+
+// Error
+// const addArrow = (a, b) => {
+//     console.log(arguments);
+//     return a + b;
+// };
+
+addExpr(1,1);
+// addArrow(1, 1);
