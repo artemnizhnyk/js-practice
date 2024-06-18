@@ -110,3 +110,28 @@ const addExpr = function (a, b) {
 
 addExpr(1,1);
 // addArrow(1, 1);
+
+
+console.log(`---------------`);
+
+let age = 30;
+let oldAge = age;
+age = 31;
+console.log(age);
+console.log(oldAge);
+console.log(`--------------------`);
+const me = {
+    name: 'Artem',
+    age: 23
+};
+// const friend = me;
+// friend.age = 27;
+// console.log(me);
+// console.log(friend);
+const friend = {...me};
+friend.age = 27;
+console.log(me);
+console.log(friend);
+
+console.log(`-----------------`);
+
