@@ -10,10 +10,6 @@ const restaurant = {
     starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
     mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-    order: function (starterIndex, mainIndex) {
-        return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-    },
-
     openingHours: {
         thu: {
             open: 12,
@@ -27,8 +23,47 @@ const restaurant = {
             open: 0, // Open 24 hours
             close: 24
         }
+    },
+
+    order: function (starterIndex, mainIndex) {
+        return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+    },
+
+    orderDelivery: function ({starterIndex = 1, mainIndex = 0, address = 'empty', time = '20:00'}) {
+        console.log(time, address, mainIndex, starterIndex);
     }
 };
+
+restaurant.orderDelivery({
+    time: '22:30',
+    address: "Via del Sole, 21",
+    mainIndex: 2,
+    starterIndex: 2
+});
+
+console.log(`-------------`);
+const {name, categories, openingHours} = restaurant;
+console.log(name, categories, openingHours);
+
+const {name: restaurantName, openingHours: hours, categories: tags} = restaurant;
+console.log(restaurantName, hours, tags);
+
+const {menu = ['Any'], starterMenu: starters = []} = restaurant;
+console.log(menu, starters);
+
+console.log(`---------------------`);
+//Mutating
+let a = 111;
+let b = 999;
+const obj = {a: 23, b: 7, c: 14};
+({a, b} = obj);
+console.log(a, b);
+
+console.log(`---------------`);
+// nested objects
+const {fri: {open, close}} = openingHours;
+console.log(open, close);
+
 console.log(`-------------`);
 
 // const array = [2, 3, 4];
