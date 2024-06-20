@@ -35,6 +35,10 @@ const restaurant = {
 
     orderPasta: function (ing1, ing2, ing3) {
         console.log(`Pasta with ${ing1}, ${ing2} and ${ing3}`);
+    },
+
+    orderPizza: function (mainIngredient, ...otherIngredients) {
+        console.log(mainIngredient, ...otherIngredients);
     }
 };
 
@@ -124,14 +128,40 @@ console.log(letters);
 console.log(``);
 
 console.log(`-------------------`);
-const ingredients = [
-    prompt(`Let's make pasta! Ingredient 1?`),
-    prompt(`Let's make pasta! Ingredient 2?`),
-    prompt(`Let's make pasta! Ingredient 3?`)
-];
-restaurant.orderPasta(...ingredients);
+// const ingredients = [
+//     prompt(`Let's make pasta! Ingredient 1?`),
+//     prompt(`Let's make pasta! Ingredient 2?`),
+//     prompt(`Let's make pasta! Ingredient 3?`)
+// ];
+// restaurant.orderPasta(...ingredients);
 
 console.log(`------------`);
 const newRestaurant = {...restaurant, founder: 'Any Founder'};
 
 const restaurantCopy = {...restaurant};
+
+console.log(`------------`);
+const arrNewOne = [1, 2, ...[3, 4]];
+
+const [a1, b1, ...others] = [1, 2, 3, 4, 5];
+console.log(a1, b1, others);
+
+const [pizza, ,risotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(pizza, risotto, otherFood);
+
+console.log(`--------------`);
+const {sat, ...weekdays} = restaurant.openingHours;
+console.log(weekdays);
+
+console.log(`---------------`);
+const add = (...digits) => {
+    return digits.reduce((previousValue, currentValue) => previousValue+currentValue);
+};
+
+console.log(add(5, 6, 9));
+const args = [1,2,3,4,5,6,7,8,9];
+console.log(add(...args));
+
+console.log(`----------------------`);
+restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
+restaurant.orderPizza('chicken');
