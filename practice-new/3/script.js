@@ -31,6 +31,10 @@ const restaurant = {
 
     orderDelivery: function ({starterIndex = 1, mainIndex = 0, address = 'empty', time = '20:00'}) {
         console.log(time, address, mainIndex, starterIndex);
+    },
+
+    orderPasta: function (ing1, ing2, ing3) {
+        console.log(`Pasta with ${ing1}, ${ing2} and ${ing3}`);
     }
 };
 
@@ -99,3 +103,35 @@ const nested = [2, 4, [5, 6]];
 // Default values
 const [p = 1, q = 1, r = 1] = [8, 9];
 console.log(p, q, r);
+
+console.log(`-------------`);
+
+const arr = [7, 8, 9];
+const newArr = [5, 6, ...arr];
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu);
+
+const mainMenuCopy = [...restaurant.mainMenu];
+const menu123 = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menu123);
+
+console.log(`-------------------`);
+
+const str = 'Artem';
+const letters = [...str, ' ', 'N.'];
+console.log(letters);
+console.log(``);
+
+console.log(`-------------------`);
+const ingredients = [
+    prompt(`Let's make pasta! Ingredient 1?`),
+    prompt(`Let's make pasta! Ingredient 2?`),
+    prompt(`Let's make pasta! Ingredient 3?`)
+];
+restaurant.orderPasta(...ingredients);
+
+console.log(`------------`);
+const newRestaurant = {...restaurant, founder: 'Any Founder'};
+
+const restaurantCopy = {...restaurant};
