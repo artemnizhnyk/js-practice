@@ -165,3 +165,26 @@ console.log(add(...args));
 console.log(`----------------------`);
 restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
 restaurant.orderPizza('chicken');
+
+console.log(`------------------`);
+
+console.log(3 || 'Jonas');
+console.log(0  || 'Jonas');
+
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+console.log(`-----------------------`);
+
+console.log(0 && 'Jonas');
+console.log(7 && 'Jonas');
+console.log(7 && 'Jonas' && 0);
+
+if (restaurant.orderPizza) {
+    restaurant.orderPizza('mushrooms', 'spinachh')
+}
+
+restaurant.orderPizza && restaurant.orderPizza();
