@@ -221,3 +221,13 @@ rest2.owner &&= '<ANONYMOUS>';
 
 console.log(rest2);
 console.log(rest1);
+
+console.log(`----------------------`);
+
+const menu1 = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu1) console.log(item);
+
+for (const item of menu1.entries()) console.log(item);
+
+for (const [i, el] of menu1.entries()) console.log(`${i+1}: ${el}`);
