@@ -237,3 +237,32 @@ for (const item of menu1.entries()) console.log(item);
 for (const [i, el] of menu1.entries()) console.log(`${i + 1}: ${el}`);
 
 console.log(`----------------------`);
+
+// if (restaurant.openingHours.mon) {
+//     console.log(restaurant.openingHours.mon.open);
+// }
+//
+// if (restaurant.openingHours.fri) {
+//     console.log(restaurant.openingHours.fri.open);
+// }
+
+console.log(restaurant.openingHours?.mon?.open);
+console.log(restaurant.openingHours?.fri?.open);
+
+console.log(`-----------------`);
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+for (const day of days) {
+    console.log(day);
+    console.log(restaurant.openingHours[day]?.open ?? 'closed');
+}
+
+console.log(`-----------------`);
+console.log(restaurant.order?.(0,1) ?? 'Method does not exist');
+console.log(restaurant.orderRisotto?.(0,1) ?? 'Method does not exist');
+
+console.log(`-----------------`);
+const users = [
+    // {name: 'Jonas', email: 'any@mail.com'}
+];
+
+console.log(users[0]?.name ?? 'User array is empty');
