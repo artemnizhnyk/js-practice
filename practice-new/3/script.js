@@ -266,3 +266,15 @@ const users = [
 ];
 
 console.log(users[0]?.name ?? 'User array is empty');
+
+console.log(`------------------`);
+for (const day of Object.keys(openingHours)) {
+    console.log(day);
+}
+
+const entries = Object.entries(openingHours);
+console.log(entries);
+
+for (const [key, {open, close}] of entries) {
+    console.log(`On ${key} we open at ${open} and close at ${close}`);
+}
