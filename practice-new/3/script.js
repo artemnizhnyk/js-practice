@@ -257,8 +257,8 @@ for (const day of days) {
 }
 
 console.log(`-----------------`);
-console.log(restaurant.order?.(0,1) ?? 'Method does not exist');
-console.log(restaurant.orderRisotto?.(0,1) ?? 'Method does not exist');
+console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
+console.log(restaurant.orderRisotto?.(0, 1) ?? 'Method does not exist');
 
 console.log(`-----------------`);
 const users = [
@@ -278,3 +278,25 @@ console.log(entries);
 for (const [key, {open, close}] of entries) {
     console.log(`On ${key} we open at ${open} and close at ${close}`);
 }
+
+console.log(`------------------`);
+const set = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto', 'Pasta', 'Pizza']);
+console.log(set);
+
+set.forEach(it => console.log(it));
+console.log(set.size);
+console.log(set.has('Pizza'));
+console.log(set.has('Notpizza'));
+set.add('Garlic bread');
+set.add('Garlic bread');
+console.log(set);
+console.log(set);
+
+console.log(`---------------`);
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const uniqueStaff = new Set(staff);
+const uniqueStaffArray = [...new Set(staff)];
+console.log(uniqueStaff);
+console.log(uniqueStaffArray);
+
+console.log(`-------------------------`);
