@@ -410,3 +410,37 @@ const plane = 'A320neo';
 console.log(plane.includes('A320'));
 console.log(plane.includes('Boeing'));
 console.log(plane.startsWith('Air'));
+
+console.log(`---------------------`);
+console.log('a+very+nice+string'.split('+'));
+
+const [firstName, lastName] = 'Artem Nizhnyk'.split(' ');
+
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+console.log(newName);
+
+const capitalizeName = (name) => {
+    let names = name.split(' ');
+    names = names.map(it => it[0].toUpperCase() + it.slice(1));
+    return names.join(' ');
+};
+
+const passengerJessica = 'jessica ann smith davis';
+console.log(capitalizeName(passengerJessica));
+console.log(capitalizeName('artem nizhnyk'));
+
+const message = 'Go to gate 23!';
+console.log(message.padStart(25, '+'));
+
+console.log(`--------------------`);
+const maskCreditCard = (number) => {
+    const str = number + '';
+    const last = str.slice(-4);
+    return last.padStart(str.length, '*')
+};
+
+console.log(maskCreditCard(2134618274618274612));
+console.log(maskCreditCard('2138671487162647687'));
+
+
+console.log('Bad weather... All Departures Delayed...\n'.repeat(10));
