@@ -327,7 +327,7 @@ console.log(rest.size);
 rest.clear();
 console.log(rest);
 
-const oneTwoArr = [1,2];
+const oneTwoArr = [1, 2];
 
 rest.set(oneTwoArr, 'Test');
 console.log(rest);
@@ -355,3 +355,27 @@ question.forEach((value, key) => console.log(typeof key === 'number' ? `${key} =
 
 const arrayFromMap = [...question];
 console.log(arrayFromMap);
+
+console.log(`--------------------`);
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(airline.indexOf('r'));
+console.log(airline.slice(4, 7));
+
+
+console.log(airline.slice(0, airline.indexOf(' ')));
+console.log(airline.slice(-8));
+
+const checkMiddleSeat = (seat) => {
+    //B and E are middle seats
+    const s = seat.slice(-1);
+    if (s === 'B' || s === 'E') console.log('Middle');
+    else console.log('Not middle');
+};
+
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('3E');
+
+console.log(typeof new String('Artem'));
