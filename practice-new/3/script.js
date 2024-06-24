@@ -334,3 +334,24 @@ console.log(rest);
 console.log(rest.size);
 
 console.log(rest.get(oneTwoArr));
+
+console.log(`-------------`);
+const question = new Map([
+    ['question', 'What is the best programming language in the world?'],
+    [1, 'C'],
+    [2, 'Java'],
+    [3, 'JavaScript'],
+    [4, 'C++'],
+    ['correct', 3],
+    [true, 'Correct✨'],
+    [false, 'Try again!']
+]);
+console.log(question);
+
+console.log(`--------------------`);
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap);
+question.forEach((value, key) => console.log(typeof key === 'number' ? `${key} => ${value}` : ''));
+
+const arrayFromMap = [...question];
+console.log(arrayFromMap);
