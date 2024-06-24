@@ -358,7 +358,7 @@ console.log(arrayFromMap);
 
 console.log(`--------------------`);
 const airline = 'TAP Air Portugal';
-const plane = 'A320';
+// const plane = 'A320';
 
 console.log(airline.indexOf('r'));
 console.log(airline.slice(4, 7));
@@ -379,3 +379,34 @@ checkMiddleSeat('23C');
 checkMiddleSeat('3E');
 
 console.log(typeof new String('Artem'));
+
+console.log(`-------------------`);
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+const passenger = 'ArtEm';
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect = passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+
+console.log(`----------------------`);
+const email = 'hello@mail.com';
+const loginEmail = '   Hello@Mail.com \n';
+const lowerEmail = loginEmail.toLowerCase();
+const trimmedEmail = lowerEmail.trim();
+console.log(trimmedEmail);
+
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(normalizedEmail === email);
+
+console.log(`----------------`);
+const priceComa = '288,97&';
+const priceDot = priceComa.replace('&', '$').replace(',', '.');
+console.log(priceDot);
+
+console.log(`------------------`);
+const plane = 'A320neo';
+console.log(plane.includes('A320'));
+console.log(plane.includes('Boeing'));
+console.log(plane.startsWith('Air'));
