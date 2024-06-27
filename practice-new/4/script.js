@@ -33,7 +33,7 @@ const checkIn = (flightNum, passenger) => {
   }
 };
 
-checkIn(flight, artem);
+// checkIn(flight, artem);
 console.log(flight);
 console.log(artem);
 
@@ -44,3 +44,21 @@ const newPassport = (person) => {
 
 newPassport(artem);
 console.log(artem);
+
+console.log(`------------------`);
+const oneWord = (str) => {
+    return str.replace(/ /g, '').toLowerCase();
+};
+
+const upperFirstWord = (str) => {
+    return str.slice(0, str.indexOf(' ')).toUpperCase() + str.slice(str.indexOf(' '));
+};
+
+//Higher-order function
+const transformer = (str, fn) => {
+    console.log(`Transformed string: ${fn(str)}`);
+    console.log(fn.name);
+};
+
+transformer('JavaScript is the best!!!', upperFirstWord);
+transformer('JavaScript is the best!!!', oneWord);
