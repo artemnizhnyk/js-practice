@@ -316,8 +316,8 @@ console.log(rest.get('name'));
 console.log(rest.get(true));
 
 console.log(`---------------------------`);
-const time = 11;
-console.log(rest.get(time >= rest.get('open') && time < rest.get('close')));
+// const time = 11;
+// console.log(rest.get(time >= rest.get('open') && time < rest.get('close')));
 
 console.log(rest.has('categories'));
 console.log(rest.has('open'));
@@ -436,7 +436,7 @@ console.log(`--------------------`);
 const maskCreditCard = (number) => {
     const str = number + '';
     const last = str.slice(-4);
-    return last.padStart(str.length, '*')
+    return last.padStart(str.length, '*');
 };
 
 console.log(maskCreditCard(2134618274618274612));
@@ -444,3 +444,15 @@ console.log(maskCreditCard('2138671487162647687'));
 
 
 console.log('Bad weather... All Departures Delayed...\n'.repeat(10));
+console.log('------------------------------------');
+
+console.log(flights.split('+'));
+
+flights.split('+').forEach(row => {
+    let [type, from, to, time] = row.split(';');
+    console.log(type.replaceAll('_', ' ').trim()
+    + ` from ${from.slice(0,3).toUpperCase()}`
+    + ` to ${to.slice(0,3).toUpperCase()}`
+    + ` (${time.replace(':', 'h')})`);
+});
+console.log('------------------------------------');
