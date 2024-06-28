@@ -62,3 +62,12 @@ const transformer = (str, fn) => {
 
 transformer('JavaScript is the best!!!', upperFirstWord);
 transformer('JavaScript is the best!!!', oneWord);
+
+console.log(`--------------------`);
+
+const greet = greeting => name => {console.log(`${greeting} ${name}`);};
+
+const greeterHey = greet('Hey');
+greeterHey('Artem');
+
+greet('Hello')('Archie');
