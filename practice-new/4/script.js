@@ -115,3 +115,37 @@ console.log(swiss);
 const flightData = [583, 'Eugene Khchaturov'];
 book.apply(swiss, flightData);
 console.log(swiss);
+
+console.log(`---------------`);
+const bookEW = book.bind(eurowings);
+const bookLH= book.bind(lufthansa);
+const bookLX = book.bind(swiss);
+
+bookEW(875, 'Any One');
+console.log(eurowings);
+
+const bookEW23 = book.bind(eurowings, 23);
+bookEW23('Archie Archie');
+console.log(eurowings);
+
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+    console.log(this);
+    this.planes++;
+    console.log(this.planes);
+};
+document.querySelector('.btn').addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+console.log(`------------`);
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+
+// const addVAT23 = addTax.bind(null, 0.23);
+// console.log(addVAT23(100));
+
+console.log(`--------------`);
+const addVAT = rate => value => value + value * rate;
+const addVAT23 = addVAT(0.23);
+
+console.log(addVAT23(1000));
+
