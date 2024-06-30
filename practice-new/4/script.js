@@ -151,3 +151,21 @@ console.log(addVAT23(1000));
 
 console.log(`---------------------`);
 (() => console.log(`This will never run again`))();
+
+console.log(`---------------------`);
+const secureBooking = () => {
+  let passengerCount = 0;
+
+  return () => {
+      passengerCount++;
+      console.log(`${passengerCount} passengers`);
+  }
+};
+
+const booker = secureBooking();
+booker();
+booker();
+booker();
+booker();
+
+console.dir(booker);
