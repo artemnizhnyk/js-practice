@@ -149,3 +149,5 @@ const addVAT23 = addVAT(0.23);
 
 console.log(addVAT23(1000));
 
+console.log(`---------------------`);
+(() => console.log(`This will never run again`))();
