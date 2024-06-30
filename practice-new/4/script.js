@@ -23,14 +23,14 @@ const artem = {
 };
 
 const checkIn = (flightNum, passenger) => {
-  flightNum = 'LH999';
-  passenger.name = 'Mr. ' + passenger.name;
+    flightNum = 'LH999';
+    passenger.name = 'Mr. ' + passenger.name;
 
-  if (passenger.passport === 2321412451) {
-      alert('Check in')
-  } else {
-      alert('Wrong passport')
-  }
+    if (passenger.passport === 2321412451) {
+        alert('Check in');
+    } else {
+        alert('Wrong passport');
+    }
 };
 
 // checkIn(flight, artem);
@@ -65,7 +65,9 @@ transformer('JavaScript is the best!!!', oneWord);
 
 console.log(`--------------------`);
 
-const greet = greeting => name => {console.log(`${greeting} ${name}`);};
+const greet = greeting => name => {
+    console.log(`${greeting} ${name}`);
+};
 
 const greeterHey = greet('Hey');
 greeterHey('Artem');
@@ -80,7 +82,7 @@ const lufthansa = {
 
     book(flightNum, name) {
         console.log(`${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`);
-        this.bookings.push({flight: `${this.iataCode}${flightNum}`, name})
+        this.bookings.push({flight: `${this.iataCode}${flightNum}`, name});
     }
 };
 
@@ -91,8 +93,8 @@ console.log(lufthansa);
 const eurowings = {
     airline: 'Eurowings',
     iataCode: 'EW',
-    bookings: [],
-}
+    bookings: []
+};
 
 const book = lufthansa.book;
 
@@ -106,7 +108,7 @@ console.log(lufthansa);
 const swiss = {
     airline: 'Swiss',
     iataCode: 'LX',
-    bookings: [],
+    bookings: []
 };
 
 book.call(swiss, 583, 'Taya Pichkur');
@@ -118,7 +120,7 @@ console.log(swiss);
 
 console.log(`---------------`);
 const bookEW = book.bind(eurowings);
-const bookLH= book.bind(lufthansa);
+const bookLH = book.bind(lufthansa);
 const bookLX = book.bind(swiss);
 
 bookEW(875, 'Any One');
@@ -154,12 +156,12 @@ console.log(`---------------------`);
 
 console.log(`---------------------`);
 const secureBooking = () => {
-  let passengerCount = 0;
+    let passengerCount = 0;
 
-  return () => {
-      passengerCount++;
-      console.log(`${passengerCount} passengers`);
-  }
+    return () => {
+        passengerCount++;
+        console.log(`${passengerCount} passengers`);
+    };
 };
 
 const booker = secureBooking();
@@ -169,3 +171,41 @@ booker();
 booker();
 
 console.dir(booker);
+
+console.log(`-----------------------`);
+let f;
+
+const g = () => {
+    const a = 23;
+    f = () => {
+        console.log(a * 2);
+    };
+};
+
+const h = () => {
+    const b = 777;
+    f = () => {
+        console.log(b * 2);
+    };
+};
+
+g();
+f();
+h();
+f();
+g();
+f();
+
+console.log(`--------------------------------`);
+const boardPassengers = (n, wait) => {
+    const perGroup = n / 3;
+
+    setTimeout(() => {
+        console.log(`We are now boarding all ${n} passengers`);
+        console.log(`There are 3 groups, each with ${perGroup} passengers`);
+    }, 1000 * wait);
+
+    console.log(`Will start boarding in ${wait} seconds`);
+};
+
+boardPassengers(180, 3);
