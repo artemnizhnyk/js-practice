@@ -102,3 +102,11 @@ console.log(arr2);
 console.log(`----------------`);
 console.log(arr.join('-'));
 console.log(arr);
+
+console.log(`-----------------`);
+arr = [23, 11, 64];
+console.log(arr[0]);
+console.log(arr.at(0));
+
+console.log(arr[arr.length-1]);
+console.log(arr.at(-1));
