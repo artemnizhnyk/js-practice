@@ -110,3 +110,17 @@ console.log(arr.at(0));
 
 console.log(arr[arr.length-1]);
 console.log(arr.at(-1));
+
+console.log(`-----------------`);
+movements.forEach(movement => movement > 0
+    ? console.log(`You deposited ${movement}`)
+    : console.log(`You withdrew ${Math.abs(movement)}`)
+);
+
+console.log(`--------------------`);
+currencies.forEach((value, key) => console.log(`${key} - ${value}`));
+
+console.log(`-------------------`);
+const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
+console.log(currenciesUnique);
+currenciesUnique.forEach(value => console.log(value));
