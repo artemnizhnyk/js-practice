@@ -81,6 +81,16 @@ const displayMovements = movements => {
 
 displayMovements(account1.movements);
 
+const createUsernames = (accounts) => {
+    return accounts.forEach(account => {
+            account.username = account.owner
+                .toLowerCase()
+                .split(' ')
+                .map(name => name.at(0))
+                .join('');
+        }
+    );
+};
 
 console.log(`-----------------------------`);
 console.log(`-----------------------------`);
@@ -156,7 +166,7 @@ console.log(movements.map(value => value * eurToUsd));
 const movementsDescription = movements.map((mov, i, arr) => {
     if (mov > 0) {
         return `Movement ${i + 1}: You deposited ${mov}`;
-    }else  {
+    } else {
         return `Movement ${i + 1}: You withdrew ${Math.abs(mov)}`;
     }
 });
