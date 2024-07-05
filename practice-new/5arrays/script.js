@@ -150,5 +150,15 @@ console.log(currenciesUnique);
 currenciesUnique.forEach(value => console.log(value));
 
 console.log(`-----------------------------`);
-console.log(`-----------------------------`);
-console.log(`-----------------------------`);
+const eurToUsd = 1.1;
+console.log(movements.map(value => value * eurToUsd));
+
+const movementsDescription = movements.map((mov, i, arr) => {
+    if (mov > 0) {
+        return `Movement ${i + 1}: You deposited ${mov}`;
+    }else  {
+        return `Movement ${i + 1}: You withdrew ${Math.abs(mov)}`;
+    }
+});
+
+console.log(movementsDescription);
