@@ -78,7 +78,6 @@ const displayMovements = movements => {
         containerMovements.insertAdjacentHTML("afterbegin", html);
     });
 };
-
 displayMovements(account1.movements);
 
 const createUsernames = (accounts) => {
@@ -91,6 +90,13 @@ const createUsernames = (accounts) => {
         }
     );
 };
+createUsernames(accounts);
+
+const calcPrintBalance = (movements) => {
+    const balance = movements.reduce((acc, curMove) => acc + curMove, 0);
+    labelBalance.textContent = `${balance}€`;
+};
+calcPrintBalance(account1.movements);
 
 console.log(`-----------------------------`);
 console.log(`-----------------------------`);
@@ -174,9 +180,7 @@ const movementsDescription = movements.map((mov, i, arr) => {
 console.log(movementsDescription);
 
 console.log(`---------------------`);
-const deposits = movements.filter(function (mov, i, arr) {
-    return mov > 0;
-});
+const deposits = movements.filter((mov, i, arr) => mov > 0);
 console.log(movements);
 console.log(deposits);
 
@@ -186,3 +190,7 @@ console.log(depositsFor);
 
 const withdrawals = movements.filter(mov => mov < 0);
 console.log(withdrawals);
+
+console.log(`-----------------------`);
+const balance = movements.reduce((acc, currentValue) => acc + currentValue, 0);
+console.log(balance);
