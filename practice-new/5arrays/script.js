@@ -220,3 +220,14 @@ const total = movements
     .map(mov => mov * eurToUsd)
     .reduce((acc, currentValue) => acc + currentValue);
 console.log(total);
+
+console.log(`-------------------`);
+const firstWithdrawal = movements.find(value => value < 0);
+console.log(firstWithdrawal);
+console.log(movements.find(value => value === 3000));
+console.log(movements.find(value => value === 2999));
+
+console.log(accounts);
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
