@@ -78,7 +78,6 @@ const displayMovements = movements => {
         containerMovements.insertAdjacentHTML("afterbegin", html);
     });
 };
-displayMovements(account1.movements);
 
 const createUsernames = (accounts) => {
     return accounts.forEach(account => {
@@ -96,26 +95,46 @@ const calcPrintBalance = (movements) => {
     const balance = movements.reduce((acc, curMove) => acc + curMove, 0);
     labelBalance.textContent = `${balance}€`;
 };
-calcPrintBalance(account1.movements);
 
-const calcDisplaySummary = (movements) => {
-    const totalIncome = movements.filter(mov => mov > 0)
-        .reduce((acc, cur) => acc  + cur, 0);
+const calcDisplaySummary = (account) => {
+    const totalIncome = account.movements.filter(mov => mov > 0)
+        .reduce((acc, cur) => acc + cur, 0);
     labelSumIn.textContent = `${totalIncome}€`;
 
-    const totalOut = movements.filter(mov => mov < 0)
-        .reduce((acc, cur) => acc  + cur, 0);
+    const totalOut = account.movements.filter(mov => mov < 0)
+        .reduce((acc, cur) => acc + cur, 0);
     labelSumOut.textContent = `${Math.abs(totalOut)}€`;
 
-    const interest = movements.filter(mov => mov > 0)
-        .map(deposit => deposit * 1.2/100)
+    const interest = account.movements.filter(mov => mov > 0)
+        .map(deposit => deposit * account.interestRate / 100)
         .filter(interest => interest >= 1)
-        .reduce((acc, cur) => acc  + cur, 0);
-    labelSumInterest.textContent = `${interest}€`
+        .reduce((acc, cur) => acc + cur, 0);
+    labelSumInterest.textContent = `${interest}€`;
 };
-calcDisplaySummary(account1.movements);
 
+let currentAccount;
+const login = (e) => {
+    e.preventDefault();
 
+    currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value && acc.pin === +inputLoginPin.value);
+
+    if (currentAccount) {
+
+        labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(' ').at(0)}`;
+
+        containerApp.style.opacity = 100;
+        inputLoginUsername.value = inputLoginPin.value = '';
+        inputLoginPin.blur();
+
+        displayMovements(currentAccount.movements);
+
+        calcPrintBalance(currentAccount.movements);
+
+        calcDisplaySummary(currentAccount);
+    }
+};
+
+btnLogin.addEventListener('click', (e) => login(e));
 
 console.log(`-----------------------------`);
 console.log(`-----------------------------`);
