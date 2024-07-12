@@ -311,3 +311,15 @@ console.log(movements.includes(-130));
 
 console.log(movements.some(move => move > 0));
 console.log(movements.every(move => move > 0));
+
+console.log(`---------------------------`);
+arr = [[1, 2, 3], [4, 5, 6], 7, 8, 9];
+console.log(arr.flat());
+
+const arrDeep = [[1, [2, [3]]], [4, [5, 6]], 7, [8, 9]];
+console.log(arrDeep.flat(4));
+
+const accountAllMovements = accounts.map(acc=>acc.movements).flat();
+console.log(accountAllMovements );
+
+console.log(accounts.flatMap(acc=>acc.movements));
