@@ -132,6 +132,7 @@ const login = (e) => {
 
         containerApp.style.opacity = 100;
         inputLoginUsername.value = inputLoginPin.value = '';
+        containerApp.style.display = 'grid';
         inputLoginPin.blur();
 
         updateUI(currentAccount);
@@ -156,6 +157,27 @@ const transfer = (e) => {
 };
 btnTransfer.addEventListener('click', (e) => transfer(e));
 
+const logout = () => {
+    containerApp.style.opacity = 0;
+    containerApp.style.display = 'none';
+    labelWelcome.textContent = 'Log in to get started';
+    currentAccount = null;
+};
+
+const closeAccount = (e) => {
+    e.preventDefault();
+    const username = inputCloseUsername.value;
+    const pin = inputClosePin.value;
+    inputCloseUsername.value = inputClosePin.value = '';
+    if (currentAccount.username === username && currentAccount.pin === +pin) {
+        const accountIndex = accounts.findIndex(acc => acc === currentAccount);
+        accounts.splice(accountIndex, 1);
+        logout();
+    }
+
+};
+
+btnClose.addEventListener('click', (e) => closeAccount(e));
 
 console.log(`-----------------------------`);
 console.log(`-----------------------------`);
@@ -273,3 +295,4 @@ const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 console.log(account);
 
 console.log(`-----------`);
+
