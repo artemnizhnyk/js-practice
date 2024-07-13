@@ -196,7 +196,7 @@ let sorted = false;
 const sortMovements = (e) => {
     e.preventDefault();
 
-    displayMovements(currentAccount.movements,  !sorted);
+    displayMovements(currentAccount.movements, !sorted);
     sorted = !sorted;
 };
 btnSort.addEventListener('click', (e) => sortMovements(e));
@@ -345,3 +345,23 @@ console.log(movements);
 const any123 = [1, 1, 2];
 any123.sort((any1, any2) => any1 - any2);
 console.log(any123);
+
+console.log(`------------`);
+const x = new Array(7);
+console.log(x);
+// x.fill(7);
+x.fill(7, 3, 5);
+console.log(x);
+
+const y = Array.from({length: 7}, () => 1);
+console.log(y);
+
+arr = [1, 2, 3, 4, 5, 6, 7];
+const z = Array.from({length: 7}, (_, i) => i + 1);
+console.log(z);
+
+labelBalance.addEventListener('click', () => {
+    const movementsUI = Array.from(document.querySelectorAll('.movements__value'),
+            el => +el.textContent.replace('€', ''));
+    console.log(movementsUI);
+});
