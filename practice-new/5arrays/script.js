@@ -114,7 +114,7 @@ const displayMovements = (movements, sort = false) => {
             <div class="movements__row">
                 <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
 <!--            <div class="movements__date">3 days ago</div>-->
-                <div class="movements__value">${movement}€</div>
+                <div class="movements__value">${movement.toFixed(2)}€</div>
             </div>
         `;
 
@@ -136,23 +136,23 @@ createUsernames(accounts);
 
 const calcPrintBalance = (acc) => {
     acc.balance = acc.movements.reduce((acc, curMove) => acc + curMove, 0);
-    labelBalance.textContent = `${acc.balance}€`;
+    labelBalance.textContent = `${acc.balance.toFixed(2)}€`;
 };
 
 const calcDisplaySummary = (account) => {
     const totalIncome = account.movements.filter(mov => mov > 0)
         .reduce((acc, cur) => acc + cur, 0);
-    labelSumIn.textContent = `${(totalIncome)}€`;
+    labelSumIn.textContent = `${totalIncome.toFixed(2)}€`;
 
     const totalOut = account.movements.filter(mov => mov < 0)
         .reduce((acc, cur) => acc + cur, 0);
-    labelSumOut.textContent = `${Math.abs(totalOut)}€`;
+    labelSumOut.textContent = `${Math.abs(totalOut).toFixed(2)}€`;
 
     const interest = account.movements.filter(mov => mov > 0)
         .map(deposit => deposit * account.interestRate / 100)
         .filter(interest => interest >= 1)
         .reduce((acc, cur) => acc + cur, 0);
-    labelSumInterest.textContent = `${interest}€`;
+    labelSumInterest.textContent = `${interest.toFixed(2)}€`;
 };
 
 const updateUI = (acc) => {
@@ -187,7 +187,7 @@ btnLogin.addEventListener('click', (e) => login(e));
 const transfer = (e) => {
     e.preventDefault();
 
-    const amount = +inputTransferAmount.value;
+    const amount = inputTransferAmount.value;
     const receiverAcc = accounts.find(acc => acc.username === inputTransferTo.value);
     inputTransferAmount.value = inputTransferTo.value = '';
 
@@ -203,7 +203,7 @@ btnTransfer.addEventListener('click', (e) => transfer(e));
 const takeLoan = (e) => {
     e.preventDefault();
 
-    const loanAmount = +inputLoanAmount.value;
+    const loanAmount = Math.floor(inputLoanAmount.value);
     inputLoanAmount.value = '';
     if (loanAmount > 0 && currentAccount.movements.some(move => move >= loanAmount * 0.1)) {
         currentAccount.movements.push(loanAmount);

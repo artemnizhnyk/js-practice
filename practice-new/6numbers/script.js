@@ -14,10 +14,10 @@ const account1 = {
         '2020-05-08T14:11:59.604Z',
         '2020-05-27T17:01:17.194Z',
         '2020-07-11T23:36:17.929Z',
-        '2020-07-12T10:51:36.790Z',
+        '2020-07-12T10:51:36.790Z'
     ],
     currency: 'EUR',
-    locale: 'pt-PT', // de-DE
+    locale: 'pt-PT' // de-DE
 };
 
 const account2 = {
@@ -34,10 +34,10 @@ const account2 = {
         '2020-02-05T16:33:06.386Z',
         '2020-04-10T14:43:26.374Z',
         '2020-06-25T18:49:59.371Z',
-        '2020-07-26T12:01:20.894Z',
+        '2020-07-26T12:01:20.894Z'
     ],
     currency: 'USD',
-    locale: 'en-US',
+    locale: 'en-US'
 };
 
 const accounts = [account1, account2];
@@ -62,3 +62,39 @@ console.log(Number.isFinite(20.2));
 console.log(Number.isFinite('20'));
 console.log(Number.isFinite(+'20s'));
 console.log(Number.isFinite(20 / 0));
+
+console.log(`-------------------`);
+console.log(Math.sqrt(25));
+console.log(5 ** 2);
+console.log(27 ** (1 / 3));
+
+console.log(`------------------`);
+console.log(Math.max(5, 3, 17, 19, '23', 16));
+console.log(Math.PI * Number.parseFloat('10px') ** 2);
+console.log(Math.floor(Math.random() * 6) + 1);
+console.log(Math.trunc(Math.random() * 6) + 1);
+
+console.log(Math.floor(-4.1));
+console.log(Math.floor(-4.9));
+console.log(Math.floor(4.1));
+console.log(Math.floor(4.9));
+
+console.log(`------------`);
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min) + 1) + min;
+console.log(randomInt(1, 6));
+
+console.log(`-----------------`);
+console.log(Math.ceil(2.1));
+console.log(Math.ceil(2.0));
+console.log(Math.ceil(0.9));
+
+console.log(`----------------`);
+console.log(Math.round(5.5));
+console.log(Math.round(5.4));
+
+console.log(`----------------------`);
+console.log((2.7777777777777).toFixed(0));
+console.log((2.7777777777777).toFixed(1));
+console.log((2.7777777777777).toFixed(2));
+console.log((2.7777777777777).toFixed(3));
+console.log((2.7777777777777).toFixed(4));
