@@ -146,3 +146,5 @@ console.log(20n === 20);
 console.log(20n == 20);
 console.log(typeof 20n);
 console.log(huge + ' is REALLY big!!!');
+
+console.log(`-----------------`);
