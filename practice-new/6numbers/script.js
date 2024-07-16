@@ -117,3 +117,13 @@ console.log(isEven(8));
 console.log(isEven(23));
 console.log(isEven(514));
 
+console.log(`----------------`);
+const diameter = 297_460_000_000;
+const priceCents = 345_99;
+console.log(priceCents);
+
+const PI = 3.14_15;
+
+console.log(`------------------`);
+console.log(+'23_333');
+console.log(+'23333');
