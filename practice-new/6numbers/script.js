@@ -148,3 +148,33 @@ console.log(typeof 20n);
 console.log(huge + ' is REALLY big!!!');
 
 console.log(`-----------------`);
+const now = new Date();
+console.log(now);
+console.log(new Date('Apr/18/2001'));
+console.log(account1.movementsDates[0]);
+
+console.log(new Date(2001, 4 - 1, 18, 0, 0, 0));
+console.log(new Date(0));
+console.log(new Date(3 * 24 * 60 * 60 * 1000));
+
+const dayInMillis = 24 * 60 * 60 * 1000;
+console.log(dayInMillis);
+
+const future = new Date(2025, 4 - 1, 18, 0, 0);
+console.log(future);
+console.log(future.getFullYear());
+console.log(future.getMonth() + 1);
+console.log(future.getDate());
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+
+console.log(future.toISOString());
+
+console.log(future.getDay());
+
+console.log(`------------------`);
+console.log(new Date().toISOString());
+console.log((new Date(0).getMilliseconds()));
+console.log(+new Date() / 1000 / 60 / 60 / 24 / 365 - 54.5);
+console.log(Date.now());
