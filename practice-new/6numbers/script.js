@@ -127,3 +127,22 @@ const PI = 3.14_15;
 console.log(`------------------`);
 console.log(+'23_333');
 console.log(+'23333');
+
+console.log(`-------------------`);
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(2 ** 53 + 1);
+
+console.log(`--------------------`);
+console.log(1848721398479128748921739718238912731278312837n);
+console.log(BigInt(184872139847));//only small number
+
+console.log(10_000n + 10_000n);
+
+console.log(`------------------`);
+const huge = 5431287468712361887162837123n;
+console.log(20n > 15);
+console.log(20n === 20);
+console.log(20n == 20);
+console.log(typeof 20n);
+console.log(huge + ' is REALLY big!!!');
