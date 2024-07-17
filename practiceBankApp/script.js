@@ -68,27 +68,34 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+function createShowingDate(dateString) {
+    const date = dateString === undefined ? new Date() : new Date(dateString);
+    const day = `${date.getDate()}`.padStart(2, 0);
+    const month = `${date.getMonth() + 1}`.padStart(2, 0);
+    const year = date.getFullYear();
+    const hour = `${date.getHours()}`.padStart(2, 0);
+    const minutes = `${date.getMinutes()}`.padStart(2, 0);
+
+    return `${day}/${month}/${year} ${hour}:${minutes}`;
+}
+
 const displayMovements = (account, sort = false) => {
     containerMovements.innerHTML = '';
 
     const sortingValues = [];
+
     const movesProcessed = sort ? account.movements.slice().sort((move1, move2) => {
         const sortingValue = move1 - move2;
         sortingValues.push(sortingValue);
         return sortingValue;
     }) : account.movements;
+
     let counter = 0;
     const movesDatesProcessed = account.movementsDates.slice().sort((move1, move2) => sortingValues[counter++]);
+
     movesProcessed.forEach((movement, i) => {
         const type = movement > 0 ? 'deposit' : 'withdrawal';
-
-        const date = new Date(movesDatesProcessed.at(i));
-        const day = `${date.getDate()}`.padStart(2, 0);
-        const month = `${date.getMonth() + 1}`.padStart(2, 0);
-        const year = date.getFullYear();
-        const hour =  `${date.getHours()}`.padStart(2, 0);
-        const minutes = `${date.getMinutes()}`.padStart(2, 0);
-        const displayDate = `${day}/${month}/${year} ${hour}:${minutes}`;
+        const displayDate = createShowingDate(movesDatesProcessed.at(i));
 
 
         const html = ` 
@@ -155,6 +162,9 @@ const login = (e) => {
         labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(' ').at(0)}`;
 
         containerApp.style.opacity = 100;
+
+        labelDate.textContent = `${createShowingDate()}`;
+
         inputLoginUsername.value = inputLoginPin.value = '';
         containerApp.style.display = 'grid';
         inputLoginPin.blur();
@@ -185,6 +195,7 @@ const takeLoan = (e) => {
     inputLoanAmount.value = '';
     if (loanAmount > 0 && currentAccount.movements.some(move => move >= loanAmount * 0.1)) {
         currentAccount.movements.push(loanAmount);
+        currentAccount.movementsDates.push(new Date().toISOString());
         updateUI(currentAccount);
     }
 };
@@ -217,18 +228,11 @@ const sortMovements = (e) => {
     sorted = !sorted;
 };
 
-const now = new Date();
-const day = `${now.getDate()}`.padStart(2, 0);
-const month = `${now.getMonth() + 1}`.padStart(2, 0);
-const year = now.getFullYear();
-const hour =  `${now.getHours()}`.padStart(2, 0);
-const minutes = `${now.getMinutes()}`.padStart(2, 0);
-labelDate.textContent = `${day}/${month}/${year} ${hour}:${minutes}`;
-
-//FAKE LOGIN
-currentAccount = account1;
-updateUI(currentAccount);
-containerApp.style.opacity = 100;
+//FAKE LOGIN \|/ ONLY TEST PURPOSES
+inputLoginUsername.value = 'js';
+inputLoginPin.value = '1111';
+login(new Event('click'));
+//FAKE LOGIN /|\ ONLY TEST PURPOSES
 
 btnLogin.addEventListener('click', (e) => login(e));
 btnTransfer.addEventListener('click', (e) => transfer(e));
