@@ -184,6 +184,9 @@ const transfer = (e) => {
         currentAccount.movements.push(-amount);
         receiverAcc.movements.push(amount);
 
+        currentAccount.movementsDates.push(new Date().toISOString());
+        receiverAcc.movementsDates.push(new Date().toISOString());
+
         updateUI(currentAccount);
     }
 };
