@@ -68,10 +68,10 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovements = (movements, sort = false) => {
+const displayMovements = (account, sort = false) => {
     containerMovements.innerHTML = '';
 
-    const movesProcessed = sort ? movements.slice().sort((move1, move2) => move1 - move2) : movements;
+    const movesProcessed = sort ? account.movements.slice().sort((move1, move2) => move1 - move2) : account.movements;
     movesProcessed.forEach((movement, i) => {
         const type = movement > 0 ? 'deposit' : 'withdrawal';
 
@@ -121,7 +121,7 @@ const calcDisplaySummary = (account) => {
 };
 
 const updateUI = (acc) => {
-    displayMovements(acc.movements);
+    displayMovements(acc);
 
     calcPrintBalance(acc);
 
@@ -147,8 +147,6 @@ const login = (e) => {
     }
 };
 
-btnLogin.addEventListener('click', (e) => login(e));
-
 const transfer = (e) => {
     e.preventDefault();
 
@@ -163,7 +161,6 @@ const transfer = (e) => {
         updateUI(currentAccount);
     }
 };
-btnTransfer.addEventListener('click', (e) => transfer(e));
 
 const takeLoan = (e) => {
     e.preventDefault();
@@ -175,7 +172,6 @@ const takeLoan = (e) => {
         updateUI(currentAccount);
     }
 };
-btnLoan.addEventListener('click', (e) => takeLoan(e));
 
 const logout = () => {
     containerApp.style.opacity = 0;
@@ -196,14 +192,30 @@ const closeAccount = (e) => {
     }
 
 };
-btnClose.addEventListener('click', (e) => closeAccount(e));
 
 let sorted = false;
-
 const sortMovements = (e) => {
     e.preventDefault();
 
-    displayMovements(currentAccount.movements, !sorted);
+    displayMovements(currentAccount, !sorted);
     sorted = !sorted;
 };
+
+const now = new Date();
+const day = `${now.getDate()}`.padStart(2, 0);
+const month = `${now.getMonth() + 1}`.padStart(2, 0);
+const year = now.getFullYear();
+const hour = now.getHours();
+const minutes = now.getMinutes();
+labelDate.textContent = `${day}/${month}/${year}, ${hour}:${minutes}`;
+
+//FAKE LOGIN
+currentAccount = account1;
+updateUI(currentAccount);
+containerApp.style.opacity = 100;
+
+btnLogin.addEventListener('click', (e) => login(e));
+btnTransfer.addEventListener('click', (e) => transfer(e));
+btnLoan.addEventListener('click', (e) => takeLoan(e));
+btnClose.addEventListener('click', (e) => closeAccount(e));
 btnSort.addEventListener('click', (e) => sortMovements(e));
