@@ -68,7 +68,7 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-function createFormattedDate(date = new Date()) {
+function createFormattedDate(date) {
     const calcDaysPassed = (date1, date2) => Math.round(Math.abs(date2 - date1) / 86_400_000);
 
     const daysPassed = calcDaysPassed(new Date(), date);
@@ -84,7 +84,7 @@ function createFormattedDate(date = new Date()) {
             return '2 days ago';
 
         case 3:
-            return '3 days ago'
+            return '3 days ago';
     }
 
     const day = `${date.getDate()}`.padStart(2, 0);
@@ -182,7 +182,15 @@ const login = (e) => {
 
         containerApp.style.opacity = 100;
 
-        labelDate.textContent = `${createFormattedDate()}`;
+        const options = {
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric'
+        };
+
+        labelDate.textContent = new Intl.DateTimeFormat(currentAccount.locale, options).format(new Date());
 
         inputLoginUsername.value = inputLoginPin.value = '';
         containerApp.style.display = 'grid';

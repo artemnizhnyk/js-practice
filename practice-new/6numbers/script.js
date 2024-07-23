@@ -198,3 +198,15 @@ console.log(3_600_000 / (1000 * 60 * 60));
 
 console.log(`------------------`);
 console.log(86_400_000 * 365);
+
+console.log(`------------------`);
+console.log(new Date().toLocaleDateString());
+const options = {
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric'
+};
+const dateTimeFormat = new Intl.DateTimeFormat('en-PL', options);
+console.log(dateTimeFormat.format(new Date()));
