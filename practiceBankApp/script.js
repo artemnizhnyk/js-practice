@@ -68,7 +68,7 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-function createFormattedDate(date) {
+function createFormattedDate(date, locale) {
     const calcDaysPassed = (date1, date2) => Math.round(Math.abs(date2 - date1) / 86_400_000);
 
     const daysPassed = calcDaysPassed(new Date(), date);
@@ -87,13 +87,7 @@ function createFormattedDate(date) {
             return '3 days ago';
     }
 
-    const day = `${date.getDate()}`.padStart(2, 0);
-    const month = `${date.getMonth() + 1}`.padStart(2, 0);
-    const year = date.getFullYear();
-    const hour = `${date.getHours()}`.padStart(2, 0);
-    const minutes = `${date.getMinutes()}`.padStart(2, 0);
-
-    return `${day}/${month}/${year} ${hour}:${minutes}`;
+    return new Intl.DateTimeFormat(locale).format(date);
 }
 
 const displayMovements = (account, sort = false) => {
@@ -115,7 +109,7 @@ const displayMovements = (account, sort = false) => {
 
 
         const date = new Date(movesDatesProcessed.at(i));
-        const displayDate = createFormattedDate(date);
+        const displayDate = createFormattedDate(date, account.locale);
 
         const html = ` 
             <div class="movements__row">
