@@ -223,15 +223,23 @@ const transfer = (e) => {
     }
 };
 
+function extracted(loanAmount) {
+    currentAccount.movements.push(loanAmount);
+    currentAccount.movementsDates.push(new Date().toISOString());
+    updateUI(currentAccount);
+}
+
 const takeLoan = (e) => {
     e.preventDefault();
 
     const loanAmount = Math.floor(inputLoanAmount.value);
     inputLoanAmount.value = '';
     if (loanAmount > 0 && currentAccount.movements.some(move => move >= loanAmount * 0.1)) {
-        currentAccount.movements.push(loanAmount);
-        currentAccount.movementsDates.push(new Date().toISOString());
-        updateUI(currentAccount);
+        setTimeout(function() {
+            currentAccount.movements.push(loanAmount);
+            currentAccount.movementsDates.push(new Date().toISOString());
+            updateUI(currentAccount);
+        }, 3000)
     }
 };
 

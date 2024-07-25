@@ -233,9 +233,10 @@ const pizzaTimer = setTimeout(
     3000,
     ...ingredients
 );
+
 console.log('Waiting...');
 
-if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
+// if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
 
 // setInterval(function () {
 //     const now = new Date();
