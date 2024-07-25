@@ -211,6 +211,21 @@ const options = {
 const dateTimeFormat = new Intl.DateTimeFormat('en-PL', options);
 console.log(dateTimeFormat.format(new Date()));
 
+console.log(`-------------------`);
+const num = 38884764.23;
+const optionsNumber = {
+    style: `unit`,
+    unit: `mile-per-hour`
+};
+
+console.log(new Intl.NumberFormat('en-US', optionsNumber).format(num));
+
+console.log(`US: ` + new Intl.NumberFormat('en-US').format(num));
+console.log(`PL: ` + new Intl.NumberFormat('en-PL').format(num));
+console.log(`DE: ` + new Intl.NumberFormat('de-DE').format(num));
+
+
+
 console.log(`------------------`);
 const ingredients = ['olives', 'spinach'];
 const pizzaTimer = setTimeout(
@@ -222,8 +237,7 @@ console.log('Waiting...');
 
 if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
 
-// setInterval
-setInterval(function () {
-    const now = new Date();
-    console.log(now);
-}, 1000);
+// setInterval(function () {
+//     const now = new Date();
+//     console.log(now);
+// }, 1000);

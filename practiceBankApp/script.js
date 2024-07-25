@@ -90,6 +90,15 @@ function createFormattedDate(date, locale) {
     return new Intl.DateTimeFormat(locale).format(date);
 }
 
+function formatCur(value, locale, currency) {
+    return new Intl.NumberFormat(locale,
+        {
+            style: `currency`,
+            currency: currency
+        })
+        .format(value);
+}
+
 const displayMovements = (account, sort = false) => {
     containerMovements.innerHTML = '';
 
@@ -111,11 +120,13 @@ const displayMovements = (account, sort = false) => {
         const date = new Date(movesDatesProcessed.at(i));
         const displayDate = createFormattedDate(date, account.locale);
 
+        const formattedMov = formatCur(movement, account.locale, account.currency);
+
         const html = ` 
             <div class="movements__row">
                 <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
             <div class="movements__date">${displayDate}</div>
-                <div class="movements__value">${movement.toFixed(2)}€</div>
+                <div class="movements__value">${formattedMov}</div>
             </div>
         `;
 
@@ -137,23 +148,23 @@ createUsernames(accounts);
 
 const calcPrintBalance = (acc) => {
     acc.balance = acc.movements.reduce((acc, curMove) => acc + curMove, 0);
-    labelBalance.textContent = `${acc.balance.toFixed(2)}€`;
+    labelBalance.textContent = formatCur(acc.balance, acc.locale, acc.currency);
 };
 
 const calcDisplaySummary = (account) => {
     const totalIncome = account.movements.filter(mov => mov > 0)
         .reduce((acc, cur) => acc + cur, 0);
-    labelSumIn.textContent = `${totalIncome.toFixed(2)}€`;
+    labelSumIn.textContent = formatCur(totalIncome, account.locale, account.currency);
 
     const totalOut = account.movements.filter(mov => mov < 0)
         .reduce((acc, cur) => acc + cur, 0);
-    labelSumOut.textContent = `${Math.abs(totalOut).toFixed(2)}€`;
+    labelSumOut.textContent = formatCur(totalOut, account.locale, account.currency);
 
     const interest = account.movements.filter(mov => mov > 0)
         .map(deposit => deposit * account.interestRate / 100)
         .filter(interest => interest >= 1)
         .reduce((acc, cur) => acc + cur, 0);
-    labelSumInterest.textContent = `${interest.toFixed(2)}€`;
+    labelSumInterest.textContent = formatCur(interest, account.locale, account.currency);
 };
 
 const updateUI = (acc) => {
