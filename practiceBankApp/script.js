@@ -175,7 +175,21 @@ const updateUI = (acc) => {
     calcDisplaySummary(acc);
 };
 
-let currentAccount;
+const startLogoutTimer = () => {
+    const tick = function () {
+        labelTimer.textContent = `${Math.trunc(time/ 60).toString().padStart(2, '0')}:${(time % 60).toString().padStart(2, '0')}`;
+        if (time <= 0) {
+            clearInterval(logoutInterval);
+            logout();
+        }
+        time--;
+    };
+    let time = 60 * 5;
+    tick();
+    return setInterval(tick, 1000);
+};
+
+let currentAccount, timer;
 const login = (e) => {
     e.preventDefault();
 
@@ -201,6 +215,9 @@ const login = (e) => {
         containerApp.style.display = 'grid';
         inputLoginPin.blur();
 
+        if (timer) clearInterval(timer);
+        timer = startLogoutTimer();
+
         updateUI(currentAccount);
     }
 };
@@ -220,6 +237,8 @@ const transfer = (e) => {
         receiverAcc.movementsDates.push(new Date().toISOString());
 
         updateUI(currentAccount);
+        clearInterval(timer);
+        timer = startLogoutTimer();
     }
 };
 
@@ -235,11 +254,13 @@ const takeLoan = (e) => {
     const loanAmount = Math.floor(inputLoanAmount.value);
     inputLoanAmount.value = '';
     if (loanAmount > 0 && currentAccount.movements.some(move => move >= loanAmount * 0.1)) {
-        setTimeout(function() {
+        setTimeout(function () {
             currentAccount.movements.push(loanAmount);
             currentAccount.movementsDates.push(new Date().toISOString());
             updateUI(currentAccount);
-        }, 3000)
+            clearInterval(timer);
+            timer = startLogoutTimer();
+        }, 3000);
     }
 };
 
